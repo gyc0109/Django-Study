@@ -27,3 +27,5 @@ pnpm-debug.log*
 # 运行时产物
 celerybeat-schedule*
 *.log
+logs/
+.run/
