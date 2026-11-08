@@ -10,11 +10,11 @@
 
 ## 三份文档，各管一段
 
-| 文档 | 它是什么 | 什么时候打开 |
-| --- | --- | --- |
-| [教学文档.md](./教学文档.md) | 原理书。把每个知识点拆开讲透 | 想搞懂「为什么会这样」 |
-| [从0到1搭建手册.md](./从0到1搭建手册.md) | 施工单。图书管理项目的操作步骤 | 要重建 practice 那个项目 |
-| **本文** | 导师带练。从想法长出一个**新项目** | 第一次独立做项目，或者「代码都有但不会从零开始」 |
+| 文档                                    | 它是什么                                 | 什么时候打开                                     |
+| --------------------------------------- | ---------------------------------------- | ------------------------------------------------ |
+| [教学文档.md](./教学文档.md)             | 原理书。把每个知识点拆开讲透             | 想搞懂「为什么会这样」                           |
+| [从0到1搭建手册.md](./从0到1搭建手册.md) | 施工单。图书管理项目的操作步骤           | 要重建 practice 那个项目                         |
+| **本文**                          | 导师带练。从想法长出一个**新项目** | 第一次独立做项目，或者「代码都有但不会从零开始」 |
 
 ### 本文和施工手册最大的三个区别
 
@@ -52,7 +52,7 @@
 - [第 0 章　先有想法，再有代码](#第-0-章先有想法再有代码)
 - [第 1 章　选型：为什么是 Django](#第-1-章选型为什么是-django)
 - [第 2 章　第一次让它跑起来](#第-2-章第一次让它跑起来)
-- 第 3 章　让它能存东西：模型与迁移
+- [第 3 章　让它能存东西：模型与迁移](#第-3-章让它能存东西模型与迁移)
 - 第 4 章　白嫖一个管理界面：Admin
 - 第 5 章　做出接口：从 HttpResponse 到 DRF
 - 第 6 章　让列表好用：分页与搜索
@@ -60,7 +60,7 @@
 - 第 8 章　给它一个界面：Vue 2.7
 - 第 9 章　把它交给未来的自己：从零重建与复盘
 
-> 本文分批写成。当前已完成 **第 0～2 章**，后面的章节会陆续补上。
+> 本文分批写成。当前已完成 **第 0～3 章**，后面的章节会陆续补上。
 
 ---
 
@@ -103,11 +103,11 @@
 
 你先自己写一遍，再对照我下面这份：
 
-| 信息 | 例子 | 为什么需要 |
-| --- | --- | --- |
-| 内容 | 把 Redis 缓存的坑复现一次 | 不写内容就不知道要做什么 |
-| 是否完成 | 未完成 / 已完成 | 待办清单的核心就是「勾掉」 |
-| 创建时间 | 2026-11-08 20:15 | 后来想按时间排序、想知道拖了多久 |
+| 信息     | 例子                      | 为什么需要                       |
+| -------- | ------------------------- | -------------------------------- |
+| 内容     | 把 Redis 缓存的坑复现一次 | 不写内容就不知道要做什么         |
+| 是否完成 | 未完成 / 已完成           | 待办清单的核心就是「勾掉」       |
+| 创建时间 | 2026-11-08 20:15          | 后来想按时间排序、想知道拖了多久 |
 
 再想想，还有什么？
 
@@ -121,15 +121,15 @@
 
 把「你会对它做的动作」列出来：
 
-| 动作 | 用一句话描述 | 第一版做不做 |
-| --- | --- | --- |
-| 新增 | 想到一件事，记下来 | 做 |
-| 查看 | 打开页面看到所有待办 | 做 |
-| 勾选完成 | 做完了，打个勾 | 做 |
-| 删除 | 记错了，删掉 | 做 |
+| 动作     | 用一句话描述           | 第一版做不做   |
+| -------- | ---------------------- | -------------- |
+| 新增     | 想到一件事，记下来     | 做             |
+| 查看     | 打开页面看到所有待办   | 做             |
+| 勾选完成 | 做完了，打个勾         | 做             |
+| 删除     | 记错了，删掉           | 做             |
 | 编辑文字 | 内容写错一个字，改一下 | **不做** |
-| 排序 | 按时间/状态排 | **不做** |
-| 搜索 | 待办太多，搜关键词 | **不做** |
+| 排序     | 按时间/状态排          | **不做** |
+| 搜索     | 待办太多，搜关键词     | **不做** |
 
 **看到那个「不做」栏了吗？这是本章最重要的一列。**
 
@@ -160,10 +160,10 @@
 
 这两列，对应的就是 Web 开发里最核心的两样东西：
 
-| 你写的 | 计算机里的名字 | Django 里叫什么 |
-| --- | --- | --- |
-| 名词（一条待办有哪些信息） | 数据模型 / 表结构 | Model（模型） |
-| 动词（能对它做什么） | 接口 / API | View（视图） |
+| 你写的                     | 计算机里的名字    | Django 里叫什么 |
+| -------------------------- | ----------------- | --------------- |
+| 名词（一条待办有哪些信息） | 数据模型 / 表结构 | Model（模型）   |
+| 动词（能对它做什么）       | 接口 / API        | View（视图）    |
 
 **记住这句话，整个项目都靠它：**
 
@@ -216,11 +216,11 @@
 
 你要一个待办清单，其实有三条路：
 
-| 方案 | 怎么做 | 优点 | 缺点 |
-| --- | --- | --- | --- |
-| A. 用现成工具 | Excel、飞书表格、手机自带备忘录 | 十分钟就能用 | 学不到东西 |
-| B. 用现成 App | 应用商店搜「待办」 | 功能比自己做的强十倍 | 学不到东西 |
-| C. 自己写 | 就是本文要做的 | 能学到东西，而且完全按自己想法来 | 要花时间 |
+| 方案          | 怎么做                          | 优点                             | 缺点       |
+| ------------- | ------------------------------- | -------------------------------- | ---------- |
+| A. 用现成工具 | Excel、飞书表格、手机自带备忘录 | 十分钟就能用                     | 学不到东西 |
+| B. 用现成 App | 应用商店搜「待办」              | 功能比自己做的强十倍             | 学不到东西 |
+| C. 自己写     | 就是本文要做的                  | 能学到东西，而且完全按自己想法来 | 要花时间   |
 
 **你现在的问题不是「怎么最快记下待办」，而是「怎么学会做一个项目」。** 所以选 C。
 
@@ -230,11 +230,11 @@
 
 同样是自己写，Python 里还有别的选择。
 
-| 框架 | 它给你什么 | 适合谁 |
-| --- | --- | --- |
-| Flask | 一个路由 + 模板，其它自己装 | 想要极简、完全掌控的人 |
-| FastAPI | 现代异步、自动生成接口文档 | 主要写 JSON 接口、不想要后台界面的人 |
-| **Django** | ORM + 迁移 + Admin 后台 + 模板 + 表单，一整套 | **想一个框架走完全流程的人** |
+| 框架             | 它给你什么                                    | 适合谁                               |
+| ---------------- | --------------------------------------------- | ------------------------------------ |
+| Flask            | 一个路由 + 模板，其它自己装                   | 想要极简、完全掌控的人               |
+| FastAPI          | 现代异步、自动生成接口文档                    | 主要写 JSON 接口、不想要后台界面的人 |
+| **Django** | ORM + 迁移 + Admin 后台 + 模板 + 表单，一整套 | **想一个框架走完全流程的人**   |
 
 选 Django 的三个具体理由：
 
@@ -273,11 +273,11 @@ Django 就会去 MySQL / SQLite 里建表、建字段。你几乎不用写 SQL�
 
 因为**你现在最不需要的就是多一个变量**。
 
-| | SQLite | MySQL |
-| --- | --- | --- |
-| 要不要装 | 不用，Python 自带 | 要装、要起容器、要建库、要建账号 |
-| 要不要配连接 | 不用，Django 默认就是它 | 要配 HOST/PORT/USER/PASSWORD |
-| 数据存哪 | 项目里一个 `db.sqlite3` 文件 | 一个独立服务 |
+|              | SQLite                         | MySQL                            |
+| ------------ | ------------------------------ | -------------------------------- |
+| 要不要装     | 不用，Python 自带              | 要装、要起容器、要建库、要建账号 |
+| 要不要配连接 | 不用，Django 默认就是它        | 要配 HOST/PORT/USER/PASSWORD     |
+| 数据存哪     | 项目里一个 `db.sqlite3` 文件 | 一个独立服务                     |
 
 新手同时面对「Django 不熟 + MySQL 连不上」两个问题，报错时根本分不清是谁的错。
 
@@ -473,14 +473,14 @@ find . -path ./.venv -prune -o -type f -print | sort
 
 不用背，但要知道每个文件「归谁管」，以后改东西才知道去哪改。
 
-| 文件 | 一句话作用 | 你以后会在这里做什么 |
-| --- | --- | --- |
-| `manage.py` | 命令行入口。所有 `python manage.py xxx` 都靠它 | 基本不改 |
-| `config/settings.py` | 全局配置：数据库、时区、装了哪些 app | **改得最多** |
-| `config/urls.py` | 总路由表：哪个网址交给谁处理 | 每加一个模块就改一次 |
-| `config/wsgi.py` | 给正式部署用的入口 | 现在完全不用管 |
-| `config/asgi.py` | 给异步部署用的入口 | 现在完全不用管 |
-| `config/__init__.py` | 让 `config` 被当成一个 Python 包 | 现在空的 |
+| 文件                   | 一句话作用                                       | 你以后会在这里做什么 |
+| ---------------------- | ------------------------------------------------ | -------------------- |
+| `manage.py`          | 命令行入口。所有 `python manage.py xxx` 都靠它 | 基本不改             |
+| `config/settings.py` | 全局配置：数据库、时区、装了哪些 app             | **改得最多**   |
+| `config/urls.py`     | 总路由表：哪个网址交给谁处理                     | 每加一个模块就改一次 |
+| `config/wsgi.py`     | 给正式部署用的入口                               | 现在完全不用管       |
+| `config/asgi.py`     | 给异步部署用的入口                               | 现在完全不用管       |
+| `config/__init__.py` | 让 `config` 被当成一个 Python 包               | 现在空的             |
 
 先打开 `config/settings.py` 扫一眼。不用全看懂，找这几行：
 
@@ -600,14 +600,14 @@ todo_lab/
 
 现在的 `todos` 就是「待办」这个功能模块。它的文件分工：
 
-| 文件 | 作用 | 什么时候会改 |
-| --- | --- | --- |
-| `models.py` | 数据长什么样（表结构） | 第 3 章 |
-| `views.py` | 收到请求后干什么（业务逻辑） | 第 2 章就开始改 |
-| `admin.py` | 后台怎么展示这个模型 | 第 4 章 |
-| `apps.py` | app 自身的配置 | 基本不改 |
-| `tests.py` | 自动化测试 | 以后想写测试时 |
-| `migrations/` | 数据库变更记录 | 第 3 章自动生成 |
+| 文件            | 作用                         | 什么时候会改    |
+| --------------- | ---------------------------- | --------------- |
+| `models.py`   | 数据长什么样（表结构）       | 第 3 章         |
+| `views.py`    | 收到请求后干什么（业务逻辑） | 第 2 章就开始改 |
+| `admin.py`    | 后台怎么展示这个模型         | 第 4 章         |
+| `apps.py`     | app 自身的配置               | 基本不改        |
+| `tests.py`    | 自动化测试                   | 以后想写测试时  |
+| `migrations/` | 数据库变更记录               | 第 3 章自动生成 |
 
 **注意：`startapp` 没有给你生成 `urls.py`。** 需要的话自己建。这是一个常见困惑点——「为什么别人的 app 里有 urls.py，我的没有？」因为那个文件本来就是可选的，Django 不强制。
 
@@ -743,6 +743,7 @@ http://127.0.0.1:8002/todos/hello/
 不容易。这是你自己写出来的第一个网页。
 
 > 如果访问 `/todos/hello/` 看到的是 404，先检查三件事：
+>
 > 1. `todos/urls.py` 里的路径是不是 `"hello/"`（不是 `"/hello/"`，开头不要斜杠）
 > 2. `config/urls.py` 里是不是 `include("todos.urls")`
 > 3. 有没有重启服务（改了 `settings.py` 或新增文件时，偶尔需要手动重启）
@@ -831,6 +832,520 @@ todo_lab/
 
 ---
 
+## 第 3 章　让它能存东西：模型与迁移
+
+上一章结束时，你的项目能响应网址，但它**没有记忆**——关掉就什么都不剩。这一章只解决一件事：让数据真正存下来。
+
+### 3.1 先把「表」画在纸上
+
+回到第 0 章你写的那张表：
+
+| 信息     | 例子                      |
+| -------- | ------------------------- |
+| 内容     | 把 Redis 缓存的坑复现一次 |
+| 是否完成 | 未完成 / 已完成           |
+| 创建时间 | 2026-11-08 20:15          |
+
+现在要把它翻译成数据库能懂的东西。每一列都要回答三个问题：**叫什么名字、存什么类型、能不能空着**。
+
+| 列名         | 类型               | 能不能空       | 说明         |
+| ------------ | ------------------ | -------------- | ------------ |
+| `content`    | 短文本，最多 200 字 | 不行           | 待办的内容   |
+| `done`       | 是 / 否            | 不行，默认「否」 | 有没有勾掉   |
+| `created_at` | 日期时间           | 不行，自动填   | 什么时候建的 |
+
+还有一列你没写，但数据库一定会有：`id`。它是每行的编号，自动递增、自动生成，Django 会替你加。
+
+**这里要先把三个东西分清楚，不然后面一定绕晕：**
+
+| 东西     | 是什么                             | 在哪                            |
+| -------- | ---------------------------------- | ------------------------------- |
+| 模型     | 用 Python 类描述的「表长什么样」   | `todos/models.py`               |
+| 迁移文件 | 把「模型的变化」记成一份施工图纸   | `todos/migrations/0001_initial.py` |
+| 数据库   | 真正存数据的文件                   | `db.sqlite3`                    |
+
+模型是图纸，迁移文件是施工单，数据库是盖好的房子。**写模型不会自动改房子**，中间必须有人照着图纸施工。
+
+### 3.2 写第一个模型
+
+打开 `todos/models.py`。现在里面只有 `from django.db import models`（`startapp` 生成的注释可以删掉）。
+
+把它改成这样：
+
+```python
+from django.db import models
+
+
+class Todo(models.Model):
+    content = models.CharField(max_length=200)
+    done = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+```
+
+就三行。逐行看：
+
+**`class Todo(models.Model)`**
+
+- 一个类 = 一张表。
+- 类名 `Todo` 会成为表名的一部分（最终表名叫 `todos_todo`，规则是「app 名_模型名小写」，3.4 节能在数据库里看到）。
+- 必须继承 `models.Model`。不继承的话它只是个普通 Python 类，Django 完全不认识。
+
+**`content = models.CharField(max_length=200)`**
+
+- `CharField` = 短文本。
+- `max_length` **必须写**。SQLite 其实不检查长度，但换成 MySQL / PostgreSQL 就会建表失败，所以养成习惯。
+- 为什么是 200？一条待办写 200 个字已经很长了。**够用就行，不用纠结。**
+
+**`done = models.BooleanField(default=False)`**
+
+- `BooleanField` = 只有「是 / 否」两种值。
+- `default=False` 的意思是：新建一条待办时，如果没提这件事，就当它「没完成」。
+- **这个 `default` 很关键**，3.6 节你会看到不写它的下场。
+
+**`created_at = models.DateTimeField(auto_now_add=True)`**
+
+- `DateTimeField` = 日期 + 时间。
+- `auto_now_add=True`：**第一次保存这条记录时自动填上当前时间**，你不用管，也改不了。
+- 注意别和 `auto_now=True` 搞混：那个是「每次保存都更新」，我们要的是「创建时间」，不是「最后修改时间」。
+
+### 3.3 makemigrations：把模型翻译成施工图纸
+
+现在 `models.py` 变了，但数据库还不知道。先让 Django 看看差在哪：
+
+```bash
+python manage.py makemigrations
+```
+
+**你现在应该看到：**
+
+```text
+Migrations for 'todos':
+  todos/migrations/0001_initial.py
+    - Create model Todo
+```
+
+三行话，三层意思：
+
+1. `Migrations for 'todos'`：这次变化属于 `todos` 这个 app。
+2. `todos/migrations/0001_initial.py`：图纸生成到这个文件。`0001` 是编号，`initial` 是「初始」。
+3. `- Create model Todo`：这次要做的操作是「创建 Todo 模型」。
+
+**注意：这一步没有碰数据库。** 它只是生成了一份文件。打开 `todos/migrations/0001_initial.py` 看看：
+
+```python
+# Generated by Django 4.2.30 on 2026-11-08 14:36
+
+from django.db import migrations, models
+
+
+class Migration(migrations.Migration):
+
+    initial = True
+
+    dependencies = []
+
+    operations = [
+        migrations.CreateModel(
+            name="Todo",
+            fields=[
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("content", models.CharField(max_length=200)),
+                ("done", models.BooleanField(default=False)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+            ],
+        ),
+    ]
+```
+
+看不懂没关系，抓三个点：
+
+- `operations` 里写的是**要做的事**：`CreateModel`。
+- `fields` 里除了你写的三个字段，还多了个 `id`——Django 自动加的，作为主键。
+- 文件头的日期和版本号是自动生成的，别改。
+
+**这份文件要当成代码的一部分保存好**（下一章我们才建 git，先有这个意识）。它不是临时文件，是你「数据库结构的历史记录」。以后每改一次模型，就会多一份 `0002_xxx.py`、`0003_xxx.py`。
+
+> **如果这里输出的是 `No changes detected`**，说明 Django 根本没看到你的模型。九成是 `config/settings.py` 的 `INSTALLED_APPS` 里没写 `"todos"`——回去检查 2.5 节那一步。
+
+### 3.4 migrate：照着图纸施工
+
+图纸有了，开始盖：
+
+```bash
+python manage.py migrate
+```
+
+**你现在应该看到（20 行左右，最后一行才是你的）：**
+
+```text
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions, todos
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying sessions.0001_initial... OK
+  Applying todos.0001_initial... OK
+```
+
+解释一下：
+
+- `Apply all migrations: admin, auth, contenttypes, sessions, todos`——你只写了 `todos`，为什么还有另外四个？因为 Django 自带的后台、用户、会话系统**也需要建表**，它们各自带了迁移文件。这些是白送的，不用管。
+- 每一行 `Applying xxx ... OK` = 执行了一份图纸。
+- 最后一行 `Applying todos.0001_initial... OK` 就是你刚生成的那份。
+
+从这一刻起，项目目录里多了一个文件：
+
+```bash
+ls -l db.sqlite3
+```
+
+```text
+-rw-r--r-- 1 gyc gyc 135168 Nov  8 22:36 db.sqlite3
+```
+
+**这就是你的数据库。** 一个文件，一百多 KB（数字会变，不用对）。以后「待办清单」的所有数据，都在这个文件里。
+
+**如果装了 `sqlite3` 命令行工具**，可以直接进去看表：
+
+```bash
+sqlite3 db.sqlite3 ".tables"
+```
+
+```text
+auth_group                  django_admin_log
+auth_group_permissions      django_content_type
+auth_permission             django_migrations
+auth_user                   django_session
+auth_user_groups            todos_todo
+auth_user_user_permissions
+```
+
+一堆 `auth_*`、`django_*` 是 Django 自带的，`todos_todo` 是你的。再看它的结构：
+
+```bash
+sqlite3 db.sqlite3 ".schema todos_todo"
+```
+
+```text
+CREATE TABLE IF NOT EXISTS "todos_todo" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "content" varchar(200) NOT NULL, "done" bool NOT NULL, "created_at" datetime NOT NULL);
+```
+
+对照 3.1 节你画的那张表：
+
+| 你写的       | 数据库里的                         | 对上了吗                     |
+| ------------ | ---------------------------------- | ---------------------------- |
+| `content`    | `"content" varchar(200) NOT NULL`  | ✅ 不能空                     |
+| `done`       | `"done" bool NOT NULL`             | ✅ 不能空（有默认值兜底）      |
+| `created_at` | `"created_at" datetime NOT NULL`   | ✅ 不能空（自动填）            |
+| 没写         | `"id" integer NOT NULL PRIMARY KEY AUTOINCREMENT` | ✅ Django 自动加的 |
+
+**还有一张隐形的表，比 `todos_todo` 更重要：**
+
+```bash
+sqlite3 db.sqlite3 "select app, name from django_migrations where app='todos';"
+```
+
+```text
+todos|0001_initial
+```
+
+`django_migrations` 是 Django 的「施工日志」：哪份图纸已经执行过，都记在这。**这就是 `migrate` 可以随便重复敲的原因**——它先查日志，执行过的不再执行。
+
+> **还想再确认一步？** `sqlmigrate` 能把图纸「翻译」成真正的 SQL：
+>
+> ```bash
+> python manage.py sqlmigrate todos 0001
+> ```
+>
+> ```text
+> BEGIN;
+> --
+> -- Create model Todo
+> --
+> CREATE TABLE "todos_todo" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "content" varchar(200) NOT NULL, "done" bool NOT NULL, "created_at" datetime NOT NULL);
+> COMMIT;
+> ```
+>
+> 看到 `CREATE TABLE` 了吗？**这才是数据库真正收到的东西。**
+
+### 3.5 在 shell 里存第一条数据
+
+表建好了，但里面是空的。Django 自带一个交互式环境，可以直接用 Python 操作数据库：
+
+```bash
+python manage.py shell
+```
+
+提示符变成 `>>>`，说明你进到了「用 Python 说话、但说话对象是数据库」的地方。
+
+```python
+>>> from todos.models import Todo
+>>> t = Todo.objects.create(content="把 Redis 缓存的坑复现一次")
+>>> t
+<Todo: Todo object (1)>
+```
+
+**`Todo.objects` 是什么？** 它是 Django 给你的「管理器」，可以理解成「Todo 这张表的操作入口」：`create` 建、`all` 查、`filter` 筛、`get` 取一条。
+
+`create` 直接把数据写进了数据库。`t` 就是刚存进去的那一行，`(1)` 是它的 `id`。
+
+再看几眼：
+
+```python
+>>> Todo.objects.count()
+1
+>>> Todo.objects.all()
+<QuerySet [<Todo: Todo object (1)>]>
+>>> t.done
+False
+>>> t.created_at
+datetime.datetime(2026, 11, 8, 14, 36, 50, 659783, tzinfo=datetime.timezone.utc)
+```
+
+三个观察：
+
+1. `done` 是 `False`——你没写它，`default=False` 生效了。
+2. `created_at` 有值——`auto_now_add=True` 生效了。
+3. 显示出来是 `Todo object (1)`，**非常难认**。`(1)` 是 id，可我想看的是内容。
+
+第 3 点是 Django 留给你的「待改进项」。先退出 shell：
+
+```python
+>>> exit()
+```
+
+打开 `todos/models.py`，在类里加三行：
+
+```python
+    def __str__(self):
+        return self.content
+```
+
+**完整文件现在长这样（第 2 版）：**
+
+```python
+from django.db import models
+
+
+class Todo(models.Model):
+    content = models.CharField(max_length=200)
+    done = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.content
+```
+
+`__str__` 是 Python 的「转成字符串」方法。Django 想显示一条记录时就调用它，你返回什么，它就显示什么。
+
+**这个东西不碰数据库，所以不用 `makemigrations`，也不用 `migrate`。** 重新进 shell：
+
+```bash
+python manage.py shell
+```
+
+```python
+>>> from todos.models import Todo
+>>> Todo.objects.all()
+<QuerySet [<Todo: 把 Redis 缓存的坑复现一次>]>
+```
+
+（**注意：改了 `models.py` 一定要退出 shell 重新进**，因为旧的那个 Python 进程里还是旧代码。）
+
+现在把这条勾掉，再存一条新的：
+
+```python
+>>> t = Todo.objects.get(id=1)
+>>> t.done = True
+>>> t.save()
+>>> Todo.objects.create(content="搞懂 makemigrations 和 migrate 的区别")
+>>> Todo.objects.count()
+2
+>>> Todo.objects.filter(done=True).count()
+1
+>>> Todo.objects.values_list("id", "content", "done")
+<QuerySet [(1, '把 Redis 缓存的坑复现一次', True), (2, '搞懂 makemigrations 和 migrate 的区别', False)]>
+```
+
+`t.done = True` 只是改了内存里的对象，**必须 `t.save()` 才会写回数据库**。这是新手最常忘的一步：改了不存，一关就没了。
+
+**最后做一件最重要的事：退出 shell，重新进，再查一次。**
+
+```python
+>>> exit()
+```
+
+```bash
+python manage.py shell
+```
+
+```python
+>>> from todos.models import Todo
+>>> Todo.objects.count()
+2
+```
+
+数据还在。**这就是「有记忆」的含义**——不在内存里，不在 Python 进程里，在 `db.sqlite3` 那个文件里。
+
+> **关于 `created_at` 显示成 UTC 的小知识**
+>
+> 你看到的时间是 `14:36`，本地时间其实是 `22:36`，差了 8 小时。原因是 `config/settings.py` 里默认 `TIME_ZONE = "UTC"`，数据库存的就是 UTC 时间。
+>
+> 第一版不用改。以后要展示给用户看时，再学时区转换。**现在只需要知道：存的是 UTC，不是坏了。**
+
+### 3.6 故意犯一次错：给已有的表加一个没默认值的字段
+
+假设你用到一半，突然觉得「待办应该有优先级」。打开 `models.py`，加一行：
+
+```python
+    priority = models.IntegerField()
+```
+
+（`IntegerField` = 整数。）
+
+然后敲：
+
+```bash
+python manage.py makemigrations
+```
+
+**你现在应该看到：**
+
+```text
+It is impossible to add a non-nullable field 'priority' to todo without specifying a default. This is because the database needs something to populate existing rows.
+Please select a fix:
+ 1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
+ 2) Quit and manually define a default value in models.py.
+Select an option:
+```
+
+翻译成中文：
+
+> 「你给已经存在的表加了一个不能为空的字段 `priority`，但表里已经有数据了——这些老数据的 `priority` 该填什么？」
+
+**这是本章最值得记住的报错。** 它背后是数据库的一条硬规则：列声明了 `NOT NULL`，那每一行都必须有值；可老数据根本没有这个值。
+
+Django 给了两条路：
+
+1. 现在临时给个默认值（只对老数据生效，不会写进模型）。
+2. 退出去，在 `models.py` 里正经写个 `default`。
+
+**选 2 才是对的做法。** 输入 `2` 回车，把那行改成：
+
+```python
+    priority = models.IntegerField(default=0)
+```
+
+再敲：
+
+```bash
+python manage.py makemigrations
+```
+
+```text
+Migrations for 'todos':
+  todos/migrations/0002_todo_priority.py
+    - Add field priority to todo
+```
+
+成功了。但你转念一想：**第一版根本不需要优先级，第 0 章早就砍掉了。** 于是把那行删掉，再敲一次：
+
+```bash
+python manage.py makemigrations
+```
+
+```text
+Migrations for 'todos':
+  todos/migrations/0003_remove_todo_priority.py
+    - Remove field priority from todo
+```
+
+**看到问题了吗？** 你只是加了一行又删掉，却留下了两份迁移文件。这就是「迁移是账本」的另一面：**它记得你做过的每一笔，包括反悔。**
+
+> **还没 `migrate` 就想反悔，怎么办？**
+>
+> 好消息：`0002` 和 `0003` 只是文件，**还没执行到数据库**。直接删掉这两个文件，再 `makemigrations`：
+>
+> ```bash
+> rm todos/migrations/0002_todo_priority.py todos/migrations/0003_remove_todo_priority.py
+> python manage.py makemigrations
+> ```
+>
+> ```text
+> No changes detected
+> ```
+>
+> 世界清静了。但如果已经 `migrate` 过，就别删文件——老老实实让它生成 `0003_remove`，历史留着比删掉安全。
+
+从这一节带走三条：
+
+1. **加字段，先想默认值。** 表里已有数据时，新字段必须有 `default` 或 `null=True`。
+2. **迁移文件不是草稿纸。** 没执行前可以删，执行后就是历史。
+3. **第一版别乱加字段。** 第 0 章砍掉的东西，忍住别加回来。
+
+### 3.7 复盘：你现在拥有的
+
+这一章你只写了三行模型代码，但拿到了这些：
+
+| 命令             | 它到底做了什么                         | 什么时候敲               |
+| ---------------- | -------------------------------------- | ------------------------ |
+| `makemigrations` | 对比模型和迁移文件，生成新的图纸       | 每次改完 `models.py`     |
+| `migrate`        | 把没执行过的图纸执行到数据库           | 生成图纸之后             |
+| `sqlmigrate`     | 把图纸翻译成 SQL 给你看                | 想确认「到底建了什么表」 |
+| `shell`          | 打开一个能直接操作数据库的 Python 环境 | 想手动验证数据           |
+
+**四个自测问题（答不上来就回去看对应小节）：**
+
+1. `makemigrations` 和 `migrate` 的区别是什么？（3.3 / 3.4）
+2. 为什么 `done` 字段要写 `default=False`？（3.2 / 3.6）
+3. `__str__` 为什么不用迁移？（3.5）
+4. 给已有数据的表加字段，为什么会报错？（3.6）
+
+**现在项目长这样：**
+
+```text
+todo_lab/
+├── db.sqlite3                  ← 新增：数据库文件
+├── manage.py
+├── config/
+│   └── ...
+└── todos/
+    ├── migrations/
+    │   ├── __init__.py
+    │   └── 0001_initial.py     ← 新增：施工图纸
+    ├── models.py               ← 改过：Todo 模型 + __str__
+    └── ...
+```
+
+**但你还有一个问题：想加一条待办，只能进 shell 敲 Python。** 这显然不是给人用的。
+
+下一章，我们不写一行前端代码，先白嫖 Django 自带的管理后台——用鼠标就能增删改查。
+
+---
+
 > **下一批内容预告**
 >
-> 第 3 章会讲：怎么写第一个模型、`makemigrations` 和 `migrate` 到底在干什么、改字段之后数据库怎么跟着变。这一章是 Django 的分水岭——从这里开始，你的项目才真正「有记忆」。
+> 第 4 章会讲：怎么创建管理员账号、怎么把 `Todo` 注册进 Admin、为什么 Django 敢白送一个后台、以及它为什么不适合直接当产品界面。另外会顺手把 `db.sqlite3` 加进 `.gitignore`——数据库文件不该进代码仓库。
