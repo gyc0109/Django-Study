@@ -191,7 +191,7 @@ DATABASES = {
         "ENGINE": "django.db.backends.mysql",                  # 使用 MySQL 后端
         "NAME": os.getenv("MYSQL_DB", "django_study"),         # 数据库名
         "USER": os.getenv("MYSQL_USER", "django"),             # 用户名
-        "PASSWORD": os.getenv("MYSQL_PASSWORD", "Henhaoji@119"),
+        "PASSWORD": os.getenv("MYSQL_PASSWORD", "gyc@0109"),
         "HOST": os.getenv("MYSQL_HOST", "127.0.0.1"),
         "PORT": os.getenv("MYSQL_PORT", "3307"),
         # utf8mb4 才能正常存中文和 emoji
@@ -203,7 +203,7 @@ DATABASES = {
 # 7. CACHES：Redis 缓存
 # =============================================================================
 # URL 格式：redis://[:密码@]主机:端口/库编号
-#   本例 redis://:Henhaoji%40119@127.0.0.1:6380/1
+#   本例 redis://:gyc%400109@127.0.0.1:6380/1
 #     - 用户名部分为空（Redis 6+ 支持 ACL，这里只用了密码）
 #     - 端口 6380：Docker 映射到宿主机的端口（容器内是 6379）
 #     - 结尾 /1  ：使用第 1 号逻辑库
@@ -215,14 +215,14 @@ DATABASES = {
 #   分开的好处是 keys 不会混，调试时 FLUSHDB 不会误删别的项目的数据。
 #
 # ★ 密码里的 @ 必须转义成 %40！
-#   Henhaoji@119 中的 @ 是 URL 里的分隔符（用户:密码@主机），
+#   gyc@0109 中的 @ 是 URL 里的分隔符（用户:密码@主机），
 #   直接写会导致地址解析错乱。其它常见转义：# → %23，/ → %2F，: → %3A。
 CACHES = {
     "default": {
         # Django 4.0+ 自带的 Redis 缓存后端，只需要 redis-py，不用装 django-redis
         "BACKEND": "django.core.cache.backends.redis.RedisCache",
         "LOCATION": os.getenv(
-            "REDIS_CACHE_URL", "redis://:Henhaoji%40119@127.0.0.1:6380/1"
+            "REDIS_CACHE_URL", "redis://:gyc%400109@127.0.0.1:6380/1"
         ),
     }
 }
@@ -312,7 +312,7 @@ CORS_ALLOWED_ORIGINS = [
 # 这里 broker 用 0 号库、backend 也用同一个地址（学习项目从简）。
 # 密码同样要 %40 转义。
 CELERY_BROKER_URL = os.getenv(
-    "REDIS_URL", "redis://:Henhaoji%40119@127.0.0.1:6380/0"
+    "REDIS_URL", "redis://:gyc%400109@127.0.0.1:6380/0"
 )
 # 结果后端 = broker 地址（同一个 Redis 的 0 号库）
 CELERY_RESULT_BACKEND = CELERY_BROKER_URL
